@@ -60,11 +60,11 @@ def detailsadd(request):
             vehicle_description = request.POST.get('vehicle_description')
             vechadd = Vehicle( vehicle_number=vehicle_number, vehicle_type=vehicle_type, vehicle_model=vehicle_model, vehicle_description=vehicle_description)
             vechadd.save()
-            return render(request,'detailsadd.html',{"empaddnote":"Successfully Added Employee"})
+            return render(request,'detailsadd.html',{"empaddnote":"Successfully Added Vechile"})
     elif not request.user.is_authenticated:
         return redirect('login.html')
     else:
-        return render(request,'detailsadd.html',{"empnotaddnote":"No Employee Added Try Again"})
+        return render(request,'detailsadd.html',{"empnotaddnote":"No Vechile Added Try Again"})
     
 def vechile_list(request):
     if not request.user.is_authenticated:
