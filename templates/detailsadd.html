@@ -11,6 +11,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
     </head>
     <body>
         <!DOCTYPE html>
@@ -19,35 +22,75 @@
     <title>Create Vehicle</title>
 </head>
 <body>
-    <h1>Create Vehicle</h1>
-    <div class = "employee-add-details">
-        {%if empaddnote%}
-        <h4>{{empaddnote}}</h4>
-        {% endif %}
+    <div class="border p-5 container mt-5 form-container d-flex justify-content-center w-10 gap-10">       
+        <form method="POST" action="{% url 'detailsadd' %}">
+            <h1>Create Vehicle</h1>
+            {%if empaddnote%}
+            <h4>{{empaddnote}}</h4>
+            {% endif %}
+
+        <span class="mb-0 text-muted">
+            {% if msg %}
+                {{ msg | safe }}
+            {% else %}
+             
+            {% endif %}
+        </span>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="vehicle_number" class="form-label">Vehicle Number:</label>
+              <input type="text" name="vehicle_number" class="form-control" required placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="mb-3">
+                <label for="vehicle_type" class="form-label">Vehicle Type:</label>
+                <select name="vehicle_type" class="form-select" required>
+                    <option value="Two Wheeler">Two Wheeler</option>
+                    <option value="Three Wheeler">Three Wheeler</option>
+                    <option value="Four Wheeler">Four Wheeler</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="vehicle_model" class="form-label">Vehicle Model:</label>
+                <input type="text" name="vehicle_model" class="form-control" required placeholder="Model" aria-label="Model" aria-describedby="addon-wrapping">
+              </div>
+              <div class="mb-3">
+                <label for="vehicle_description" class="form-label">Vehicle Description:</label>
+                <input type="text" name="vehicle_description" class="form-control" required placeholder="Description" aria-label="Description" aria-describedby="addon-wrapping">
+              </div>
+            
+        <div class="d-flex flex-column gap-4">
+            <div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </div>
+           <div class="d-flex flex-column">
+            <label>Want to go back!</label>
+            <button class="btn btn-primary"><a class="text-white" href="{% url 'displaydetails' %}">Back</a></button>
+           </div>
+        </div>
+        </form>
     </div>
-    <form method="post" action="{% url 'detailsadd' %}">
+
+   
+    <div class = "employee-add-details">
+       
+    </div>
+    {% comment %} <form method="post" >
         {% csrf_token %}
         <label for="vehicle_number">Vehicle Number:</label>
-        <input type="text" name="vehicle_number" required>
+        
         <br><br>
-        <label for="vehicle_type">Vehicle Type:</label>
-        <select name="vehicle_type" required>
-            <option value="Two Wheeler">Two Wheeler</option>
-            <option value="Three Wheeler">Three Wheeler</option>
-            <option value="Four Wheeler">Four Wheeler</option>
-        </select>
+        <label for="vehicle_type"></label>
+        
         <br><br>
-        <label for="vehicle_model">Vehicle Model:</label>
+        <label for="vehicle_model"></label>
         <input type="text" name="vehicle_model" required>
         <br><br>
-        <label for="vehicle_description">Vehicle Description:</label>
+        <label for="vehicle_description"></label>
         <textarea name="vehicle_description" required></textarea>
         <br><br>
         <button type="submit">Submit</button>
-    </form>
-    <a href="{% url 'displaydetails' %}">
-        <input type="button" class = "button-User" value="Back">
-    </a>
+    </form> {% endcomment %}
+   
 </body>
 </html>
 
