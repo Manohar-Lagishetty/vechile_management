@@ -1,0 +1,1 @@
+web: gunicorn 'vechile_app.wsgi'
