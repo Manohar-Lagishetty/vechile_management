@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!DOCTYPE html>
+<html>
+<head>
+    <title>Create Vehicle</title>
+</head>
+<body>
+    <h1>Create Vehicle</h1>
+    <div class = "employee-add-details">
+        {%if empaddnote%}
+        <h4>{{empaddnote}}</h4>
+        {% endif %}
+    </div>
+    <form method="post" action="{% url 'detailsadd' %}">
+        {% csrf_token %}
+        <label for="vehicle_number">Vehicle Number:</label>
+        <input type="text" name="vehicle_number" required>
+        <br><br>
+        <label for="vehicle_type">Vehicle Type:</label>
+        <select name="vehicle_type" required>
+            <option value="Two Wheeler">Two Wheeler</option>
+            <option value="Three Wheeler">Three Wheeler</option>
+            <option value="Four Wheeler">Four Wheeler</option>
+        </select>
+        <br><br>
+        <label for="vehicle_model">Vehicle Model:</label>
+        <input type="text" name="vehicle_model" required>
+        <br><br>
+        <label for="vehicle_description">Vehicle Description:</label>
+        <textarea name="vehicle_description" required></textarea>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'displaydetails' %}">
+        <input type="button" class = "button-User" value="Back">
+    </a>
+</body>
+</html>
+
+        <script src="" async defer></script>
+    </body><main>
+            
+    </main>
+</html>

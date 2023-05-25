@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="empretrive-container">
+            <div class = "empretrive-class"> 
+                <div class="empretrive-table">
+                    <div class="empretrive-title">
+                        <h1>Vechile Details</h1>
+                    </div>
+                    {% if user.is_superuse %}
+                    <a href="{% url 'detailsadd' %}">
+                            <input type="button" class = "button-User" value="Add Vechiles">
+                        </a>
+                    {% else %}
+                        <div></div>
+                    {% endif %}
+                    <table>
+                        <thead>
+                            <tr class="thead-tr">
+                                <th>Vechile Number</th>
+                                <th>Vechile Type</th>
+                                <th>Vechile Model</th>
+                                <th>Vechile Description</th>
+                            </tr>
+                        </thead>   
+                        <tbody>
+                            {% for vech in vechile_details %}
+                            <tr>
+                                <td>{{ vech.vehicle_number}}</td>
+                                <td>{{ vech.vehicle_type}}</td>
+                                <td>{{ vech.vehicle_model}}</td>
+                                <td>{{ vech.vehicle_description}}</td>
+                                <td>
+                                    {% if user.is_superuse %}
+                                    <form method="post" action="{% url 'delete_data' vech.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" clas="retrive-button" value="Delete">Delete</button>
+                                    </form>
+                                    {% else %}
+                                        <div></div>
+                                    {% endif %}
+                                    
+                                </td>
+                                <td>
+                                    {% if user.is_superuse or user.is_adim%}
+                                    <form method="post" action="{% url 'edit_data' vech.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" clas="retrive-button" value="Delete">Update</button>
+                                    </form>
+                                    {% else %}
+                                        <div></div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{% url 'logout_view' %}">
+                        <input type="button" class = "button-User" value="logout">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>
