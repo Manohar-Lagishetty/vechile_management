@@ -63,8 +63,8 @@
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
             </div>
            <div class="d-flex flex-column">
-            <label>Want to go back!</label>
-            <button class="btn btn-primary"><a class="text-white" href="{% url 'displaydetails' %}">Back</a></button>
+            <label>Want to view details!</label>
+            <button class="btn btn-primary"><a class="text-white" href="{% url 'displaydetails' %}">Vechile Details</a></button>
            </div>
         </div>
         </form>
@@ -74,22 +74,7 @@
     <div class = "employee-add-details">
        
     </div>
-    {% comment %} <form method="post" >
-        {% csrf_token %}
-        <label for="vehicle_number">Vehicle Number:</label>
-        
-        <br><br>
-        <label for="vehicle_type"></label>
-        
-        <br><br>
-        <label for="vehicle_model"></label>
-        <input type="text" name="vehicle_model" required>
-        <br><br>
-        <label for="vehicle_description"></label>
-        <textarea name="vehicle_description" required></textarea>
-        <br><br>
-        <button type="submit">Submit</button>
-    </form> {% endcomment %}
+    
    
 </body>
 </html>
